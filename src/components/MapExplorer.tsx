@@ -40,6 +40,9 @@ export default function MapExplorer() {
 
   useEffect(()=>{
     if(!container.current || mapRef.current)return;
+    // MapLibre v6 worker discovery can fail under Next.js Turbopack.
+    // The predev/prebuild script copies both the worker and its sibling ESM dependency.
+    maplibregl.setWorkerUrl('/maplibre/maplibre-gl-worker.mjs');
     const map=new maplibregl.Map({
       container:container.current,style:styleURL('dark'),center:DEFAULT_CENTER,zoom:12.5,
       pitch:0,bearing:0,attributionControl:{compact:true},

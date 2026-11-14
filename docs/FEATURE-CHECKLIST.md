@@ -27,3 +27,10 @@
 
 ## Notes
 Roads are identified by upstream layer-name patterns, not a fully owned schema. A future self-host vector tile schema should provide stable per-class IDs. Search currently accepts coordinates only; address search awaits a dedicated geocoder. This is a map explorer, not a route-first UI.
+
+## Hotfix: MapLibre v6 worker
+- [x] Set an explicit same-origin worker URL before Map construction.
+- [x] Copy worker and its shared ESM import on predev/prebuild.
+- [ ] Verify /maplibre/maplibre-gl-worker.mjs serves JS (not HTML) after install.
+- [ ] Verify /maplibre/maplibre-gl-shared.mjs serves JS.
+- [ ] Browser smoke test: map tiles render without worker error.
