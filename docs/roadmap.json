@@ -1,0 +1,1158 @@
+{
+  "version": 1,
+  "count": 144,
+  "items": [
+    {
+      "id": 1,
+      "name": "2D and 3D map mode switching",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 2,
+      "name": "Extruded buildings with real-world heights",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 3,
+      "name": "3D terrain elevation and hillshading",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 4,
+      "name": "Zoom-aware smart label density",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 5,
+      "name": "Customizable road colors and widths",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 6,
+      "name": "Road hierarchy: motorways, avenues and streets",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 7,
+      "name": "Distinct park, forest, water and land-use layers",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 8,
+      "name": "Category-specific POI icons",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 9,
+      "name": "Turkish and English map labels",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 10,
+      "name": "Smooth camera and navigation animations",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P0",
+      "status": "In Review"
+    },
+    {
+      "id": 11,
+      "name": "Free camera rotation",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 12,
+      "name": "Reset map orientation to north",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 13,
+      "name": "Full-screen map mode",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 14,
+      "name": "Visual map style editor",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 15,
+      "name": "Save personal map themes",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 16,
+      "name": "Import and export style JSON",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 17,
+      "name": "Reorder map layers",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 18,
+      "name": "Hybrid satellite imagery with street labels",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 19,
+      "name": "Globe projection view",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 20,
+      "name": "Scalebar and map scale",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 21,
+      "name": "Measure distance on the map",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 22,
+      "name": "Measure area and perimeter",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 23,
+      "name": "Export map screenshots",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 24,
+      "name": "Saved places and bookmarks",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 25,
+      "name": "Share map viewport with URL",
+      "category": "Map Experience",
+      "phase": 1,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 26,
+      "name": "Search-as-you-type autocomplete",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 27,
+      "name": "Search cities, districts, neighborhoods and streets",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 28,
+      "name": "Reverse geocode map coordinates",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 29,
+      "name": "Discover nearby places",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 30,
+      "name": "Filter POIs by category",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 31,
+      "name": "Search within current map viewport",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 32,
+      "name": "Recent search history",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 33,
+      "name": "Favorite places and home/work shortcuts",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 34,
+      "name": "Detailed place information panel",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 35,
+      "name": "Search directly using coordinates",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 36,
+      "name": "Support Open Location Code / Plus Codes",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 37,
+      "name": "Find similar places nearby",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 38,
+      "name": "Multilingual address and POI search",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 39,
+      "name": "Normalize and deduplicate addresses",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 40,
+      "name": "Share locations and GeoJSON points",
+      "category": "Places & Search",
+      "phase": 2,
+      "priority": "P1",
+      "status": "Backlog"
+    },
+    {
+      "id": 41,
+      "name": "Point-to-point and multi-stop route planning",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 42,
+      "name": "Alternative routes by travel preference",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 43,
+      "name": "Driving, walking, cycling and transit profiles",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 44,
+      "name": "Avoid tolls, highways and ferries",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 45,
+      "name": "Analyze elevation, grade and road surface",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 46,
+      "name": "Turn-by-turn route instructions",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 47,
+      "name": "Estimated arrival, distance and cost",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 48,
+      "name": "GPS trace map matching",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 49,
+      "name": "Follow-user navigation camera",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 50,
+      "name": "Automatic route recalculation",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 51,
+      "name": "Travel time and distance matrices",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 52,
+      "name": "Optimize multi-stop visit order",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 53,
+      "name": "Isochrone / reachable area polygons",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 54,
+      "name": "Import and export GPX/KML routes",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 55,
+      "name": "Save and share route plans",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 56,
+      "name": "Discover POIs along a route",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 57,
+      "name": "Traffic-aware routing when data is available",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 58,
+      "name": "Replay recorded journeys",
+      "category": "Routing & Navigation",
+      "phase": 3,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 59,
+      "name": "Building footprints",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 60,
+      "name": "Building height coverage",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 61,
+      "name": "Land-use classification",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 62,
+      "name": "Road network layers",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 63,
+      "name": "Bicycle lanes",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 64,
+      "name": "Pedestrian paths",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 65,
+      "name": "Parking locations",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 66,
+      "name": "EV charging stations",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 67,
+      "name": "Bridges and tunnels",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 68,
+      "name": "Administrative boundaries",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 69,
+      "name": "Public transport routes",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 70,
+      "name": "Bus and train stops",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 71,
+      "name": "Traffic congestion",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 72,
+      "name": "Road closures",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 73,
+      "name": "Roadworks and incidents",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 74,
+      "name": "Cycling network",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 75,
+      "name": "Speed limits",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 76,
+      "name": "Transport accessibility",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 77,
+      "name": "Parks and forests",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 78,
+      "name": "Lakes and rivers",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 79,
+      "name": "Terrain elevation and slope",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 80,
+      "name": "Air quality",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 81,
+      "name": "Weather conditions",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 82,
+      "name": "Precipitation radar",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 83,
+      "name": "Flood and earthquake risk zones",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 84,
+      "name": "Land cover",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 85,
+      "name": "Custom GeoJSON uploads",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 86,
+      "name": "Live device locations",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 87,
+      "name": "Geofencing regions",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 88,
+      "name": "Heatmap overlays",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 89,
+      "name": "Custom vector tile sources",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 90,
+      "name": "User-defined POIs",
+      "category": "Map Layers",
+      "phase": 4,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 91,
+      "name": "Draw point features",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 92,
+      "name": "Draw lines and paths",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 93,
+      "name": "Draw polygons",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 94,
+      "name": "Draw circles and radius buffers",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 95,
+      "name": "Calculate area and perimeter",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 96,
+      "name": "Measure distances between points",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 97,
+      "name": "Select multiple map features",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 98,
+      "name": "Edit, split and merge geometry",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 99,
+      "name": "Undo and redo map edits",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 100,
+      "name": "Export GeoJSON",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 101,
+      "name": "Import KML and GPX files",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 102,
+      "name": "Generate point density heatmaps",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 103,
+      "name": "Find nearest features",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 104,
+      "name": "Point-in-polygon queries",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 105,
+      "name": "Polygon intersection analysis",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 106,
+      "name": "Search POIs along route corridors",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 107,
+      "name": "Grid and hexagon aggregation",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 108,
+      "name": "Filter geospatial data by time range",
+      "category": "Spatial Tools",
+      "phase": 5,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 109,
+      "name": "Live position updates via WebSockets",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 110,
+      "name": "Track multiple devices on a map",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 111,
+      "name": "Location history and timeline",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 112,
+      "name": "GPS accuracy circles",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 113,
+      "name": "Movement heading and speed indicators",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 114,
+      "name": "Last-seen device timestamps",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 115,
+      "name": "Expiring location sharing links",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 116,
+      "name": "Geofence entry and exit events",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 117,
+      "name": "Location-triggered notifications",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 118,
+      "name": "Driving walking and stationary detection",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 119,
+      "name": "Journey replay animations",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 120,
+      "name": "Cluster thousands of live points",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 121,
+      "name": "Location data latency and quality metrics",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 122,
+      "name": "Real-time IoT and sensor overlays",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 123,
+      "name": "User and organization-level layer permissions",
+      "category": "Realtime Maps",
+      "phase": 6,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 124,
+      "name": "API key management",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 125,
+      "name": "OAuth2 integration",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 126,
+      "name": "Fine-grained API scopes",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 127,
+      "name": "Allowed domain and origin restrictions",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 128,
+      "name": "Per-application usage quotas",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 129,
+      "name": "API usage analytics",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 130,
+      "name": "OpenAPI 3.1 documentation",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 131,
+      "name": "Webhook event delivery",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 132,
+      "name": "WebSocket streaming API",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 133,
+      "name": "GeoJSON REST API",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 134,
+      "name": "Vector tile API",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 135,
+      "name": "Map style API",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 136,
+      "name": "Request caching and CDN strategy",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 137,
+      "name": "API versioning and compatibility",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 138,
+      "name": "Developer dashboard",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 139,
+      "name": "Interactive API playground",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 140,
+      "name": "Multi-tenant organization isolation",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 141,
+      "name": "Request IDs and distributed tracing",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 142,
+      "name": "Service health and readiness checks",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 143,
+      "name": "Swappable provider adapters",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    },
+    {
+      "id": 144,
+      "name": "Consistent API error contract",
+      "category": "Maps API & Developer Platform",
+      "phase": 7,
+      "priority": "P2",
+      "status": "Backlog"
+    }
+  ]
+}
