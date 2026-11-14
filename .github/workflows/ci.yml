@@ -26,9 +26,28 @@ jobs:
             sleep 1
           done
           for path in maplibre-gl-worker.mjs maplibre-gl-shared.mjs; do
-            response=$(curl -sS -o /tmp/"$path" -w '%{http_code} %{content_type}' http://127.0.0.1:3000/maplibre/"$path")
+            response=$(curl -sS -o /tmp/"$path" -w '%{http_code} %{content_type}' http://127.0.0.1:3000/api/maplibre/"$path")
             echo "$path: $response"
             [[ "$response" == 200\ * ]] || exit 1
             [[ "$response" != *text/html* ]] || exit 1
           done
           test -s /tmp/maplibre-gl-worker.mjs
+
+      - name: Smoke test worker URLs on Turbopack dev server
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run dev -- --port 3100 > /tmp/coreor-dev.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for i in $(seq 1 40); do
+            if curl -fsS http://127.0.0.1:3100/ > /dev/null; then break; fi
+            sleep 1
+          done
+          for path in maplibre-gl-worker.mjs maplibre-gl-shared.mjs; do
+            response=$(curl -sS -o /tmp/dev-"$path" -w '%{http_code} %{content_type}' http://127.0.0.1:3100/api/maplibre/"$path")
+            echo "dev $path: $response"
+            [[ "$response" == 200\ * ]] || exit 1
+            [[ "$response" == *javascript* ]] || exit 1
+          done
+          test -s /tmp/dev-maplibre-gl-worker.mjs
