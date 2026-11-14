@@ -14,3 +14,21 @@ jobs:
       - run: npm install
       - run: npm run typecheck
       - run: npm run build
+      - name: Smoke test worker URLs and content types
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run start -- --port 3000 > /tmp/coreor-next.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:3000/ > /dev/null; then break; fi
+            sleep 1
+          done
+          for path in maplibre-gl-worker.mjs maplibre-gl-shared.mjs; do
+            response=$(curl -sS -o /tmp/"$path" -w '%{http_code} %{content_type}' http://127.0.0.1:3000/maplibre/"$path")
+            echo "$path: $response"
+            [[ "$response" == 200\ * ]] || exit 1
+            [[ "$response" != *text/html* ]] || exit 1
+          done
+          test -s /tmp/maplibre-gl-worker.mjs

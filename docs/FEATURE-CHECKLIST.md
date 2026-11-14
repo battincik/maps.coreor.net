@@ -34,3 +34,9 @@ Roads are identified by upstream layer-name patterns, not a fully owned schema. 
 - [ ] Verify /maplibre/maplibre-gl-worker.mjs serves JS (not HTML) after install.
 - [ ] Verify /maplibre/maplibre-gl-shared.mjs serves JS.
 - [ ] Browser smoke test: map tiles render without worker error.
+
+## Worker regression (second hotfix)
+- [x] Removed invalid requirement that the shared ESM file be nonempty (CI proved it can be zero bytes).
+- [x] Verify worker is nonempty after copy.
+- [x] CI smoke check: production server serves both .mjs URLs with HTTP 200, not text/html.
+- [ ] Confirm MapLibre worker starts in browser (manual browser test).
