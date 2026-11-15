@@ -1,6 +1,6 @@
 # Coreor Maps — Development Roadmap
 
-> **144 GitHub Issues created and individually tracked.** The first ten features are **Implementation Done / QA Pending**: PR #1 contains their initial implementation, but browser acceptance and merge remain pending.
+> **144 GitHub Issues tracked.** MAP-001–MAP-010 are closed after merged PR #1 (implementation delivered; browser QA tracked in #147). PR #146 implements 18 further capabilities (In Review) and partially implements four broader ones (In Progress); browser QA is tracked in #150.
 
 ## Product standards
 - Map exploration is the default experience. Routing and markers appear only after explicit user action.
@@ -22,7 +22,9 @@ Suggested views: **Roadmap**, **Board by Status**, **Priority**, **Area**, **Cur
 ## Release gates
 - An issue enters **In Review** after implementation and passing automated checks.
 - An issue reaches **Done** only when the feature-specific criteria, production build, mobile/desktop UX, accessibility, real-map browser verification and code review pass.
-- Draft PR #1: https://github.com/battincik/maps.coreor.net/pull/1
+- Merged PR #1: https://github.com/battincik/maps.coreor.net/pull/1
+- Feature PR #146: https://github.com/battincik/maps.coreor.net/pull/146
+- Follow-up QA: #147 and #150
 
 ## All 144 trackable features
 
@@ -30,31 +32,31 @@ Suggested views: **Roadmap**, **Board by Status**, **Priority**, **Area**, **Cur
 
 | ID | Issue | Feature | Priority | Status |
 |---|---|---|---|---|
-| MAP-001 | [#2](https://github.com/battincik/maps.coreor.net/issues/2) | 2D and 3D map mode switching | P0 | Implementation Done / QA Pending |
-| MAP-002 | [#3](https://github.com/battincik/maps.coreor.net/issues/3) | Extruded buildings with real-world heights | P0 | Implementation Done / QA Pending |
-| MAP-003 | [#4](https://github.com/battincik/maps.coreor.net/issues/4) | 3D terrain elevation and hillshading | P0 | Implementation Done / QA Pending |
-| MAP-004 | [#5](https://github.com/battincik/maps.coreor.net/issues/5) | Zoom-aware smart label density | P0 | Implementation Done / QA Pending |
-| MAP-005 | [#6](https://github.com/battincik/maps.coreor.net/issues/6) | Customizable road colors and widths | P0 | Implementation Done / QA Pending |
-| MAP-006 | [#7](https://github.com/battincik/maps.coreor.net/issues/7) | Road hierarchy: motorways, avenues and streets | P0 | Implementation Done / QA Pending |
-| MAP-007 | [#8](https://github.com/battincik/maps.coreor.net/issues/8) | Distinct park, forest, water and land-use layers | P0 | Implementation Done / QA Pending |
-| MAP-008 | [#9](https://github.com/battincik/maps.coreor.net/issues/9) | Category-specific POI icons | P0 | Implementation Done / QA Pending |
-| MAP-009 | [#10](https://github.com/battincik/maps.coreor.net/issues/10) | Turkish and English map labels | P0 | Implementation Done / QA Pending |
-| MAP-010 | [#11](https://github.com/battincik/maps.coreor.net/issues/11) | Smooth camera and navigation animations | P0 | Implementation Done / QA Pending |
-| MAP-011 | [#12](https://github.com/battincik/maps.coreor.net/issues/12) | Free camera rotation | P1 | Backlog |
-| MAP-012 | [#13](https://github.com/battincik/maps.coreor.net/issues/13) | Reset map orientation to north | P1 | Backlog |
-| MAP-013 | [#14](https://github.com/battincik/maps.coreor.net/issues/14) | Full-screen map mode | P1 | Backlog |
+| MAP-001 | [#2](https://github.com/battincik/maps.coreor.net/issues/2) | 2D and 3D map mode switching | P0 | Done |
+| MAP-002 | [#3](https://github.com/battincik/maps.coreor.net/issues/3) | Extruded buildings with real-world heights | P0 | Done |
+| MAP-003 | [#4](https://github.com/battincik/maps.coreor.net/issues/4) | 3D terrain elevation and hillshading | P0 | Done |
+| MAP-004 | [#5](https://github.com/battincik/maps.coreor.net/issues/5) | Zoom-aware smart label density | P0 | Done |
+| MAP-005 | [#6](https://github.com/battincik/maps.coreor.net/issues/6) | Customizable road colors and widths | P0 | Done |
+| MAP-006 | [#7](https://github.com/battincik/maps.coreor.net/issues/7) | Road hierarchy: motorways, avenues and streets | P0 | Done |
+| MAP-007 | [#8](https://github.com/battincik/maps.coreor.net/issues/8) | Distinct park, forest, water and land-use layers | P0 | Done |
+| MAP-008 | [#9](https://github.com/battincik/maps.coreor.net/issues/9) | Category-specific POI icons | P0 | Done |
+| MAP-009 | [#10](https://github.com/battincik/maps.coreor.net/issues/10) | Turkish and English map labels | P0 | Done |
+| MAP-010 | [#11](https://github.com/battincik/maps.coreor.net/issues/11) | Smooth camera and navigation animations | P0 | Done |
+| MAP-011 | [#12](https://github.com/battincik/maps.coreor.net/issues/12) | Free camera rotation | P1 | In Review |
+| MAP-012 | [#13](https://github.com/battincik/maps.coreor.net/issues/13) | Reset map orientation to north | P1 | In Review |
+| MAP-013 | [#14](https://github.com/battincik/maps.coreor.net/issues/14) | Full-screen map mode | P1 | In Review |
 | MAP-014 | [#15](https://github.com/battincik/maps.coreor.net/issues/15) | Visual map style editor | P1 | Backlog |
 | MAP-015 | [#16](https://github.com/battincik/maps.coreor.net/issues/16) | Save personal map themes | P1 | Backlog |
 | MAP-016 | [#17](https://github.com/battincik/maps.coreor.net/issues/17) | Import and export style JSON | P1 | Backlog |
-| MAP-017 | [#18](https://github.com/battincik/maps.coreor.net/issues/18) | Reorder map layers | P1 | Backlog |
-| MAP-018 | [#19](https://github.com/battincik/maps.coreor.net/issues/19) | Hybrid satellite imagery with street labels | P1 | Backlog |
-| MAP-019 | [#20](https://github.com/battincik/maps.coreor.net/issues/20) | Globe projection view | P1 | Backlog |
-| MAP-020 | [#21](https://github.com/battincik/maps.coreor.net/issues/21) | Scalebar and map scale | P1 | Backlog |
-| MAP-021 | [#22](https://github.com/battincik/maps.coreor.net/issues/22) | Measure distance on the map | P1 | Backlog |
-| MAP-022 | [#23](https://github.com/battincik/maps.coreor.net/issues/23) | Measure area and perimeter | P1 | Backlog |
-| MAP-023 | [#24](https://github.com/battincik/maps.coreor.net/issues/24) | Export map screenshots | P1 | Backlog |
-| MAP-024 | [#25](https://github.com/battincik/maps.coreor.net/issues/25) | Saved places and bookmarks | P1 | Backlog |
-| MAP-025 | [#26](https://github.com/battincik/maps.coreor.net/issues/26) | Share map viewport with URL | P1 | Backlog |
+| MAP-017 | [#18](https://github.com/battincik/maps.coreor.net/issues/18) | Reorder map layers | P1 | In Progress |
+| MAP-018 | [#19](https://github.com/battincik/maps.coreor.net/issues/19) | Hybrid satellite imagery with street labels | P1 | In Progress |
+| MAP-019 | [#20](https://github.com/battincik/maps.coreor.net/issues/20) | Globe projection view | P1 | In Review |
+| MAP-020 | [#21](https://github.com/battincik/maps.coreor.net/issues/21) | Scalebar and map scale | P1 | In Review |
+| MAP-021 | [#22](https://github.com/battincik/maps.coreor.net/issues/22) | Measure distance on the map | P1 | In Review |
+| MAP-022 | [#23](https://github.com/battincik/maps.coreor.net/issues/23) | Measure area and perimeter | P1 | In Review |
+| MAP-023 | [#24](https://github.com/battincik/maps.coreor.net/issues/24) | Export map screenshots | P1 | In Review |
+| MAP-024 | [#25](https://github.com/battincik/maps.coreor.net/issues/25) | Saved places and bookmarks | P1 | In Review |
+| MAP-025 | [#26](https://github.com/battincik/maps.coreor.net/issues/26) | Share map viewport with URL | P1 | In Review |
 
 ### Places & Search — Phase 2
 
@@ -140,19 +142,19 @@ Suggested views: **Roadmap**, **Board by Status**, **Priority**, **Area**, **Cur
 
 | ID | Issue | Feature | Priority | Status |
 |---|---|---|---|---|
-| MAP-091 | [#92](https://github.com/battincik/maps.coreor.net/issues/92) | Draw point features | P2 | Backlog |
-| MAP-092 | [#93](https://github.com/battincik/maps.coreor.net/issues/93) | Draw lines and paths | P2 | Backlog |
-| MAP-093 | [#94](https://github.com/battincik/maps.coreor.net/issues/94) | Draw polygons | P2 | Backlog |
-| MAP-094 | [#95](https://github.com/battincik/maps.coreor.net/issues/95) | Draw circles and radius buffers | P2 | Backlog |
-| MAP-095 | [#96](https://github.com/battincik/maps.coreor.net/issues/96) | Calculate area and perimeter | P2 | Backlog |
-| MAP-096 | [#97](https://github.com/battincik/maps.coreor.net/issues/97) | Measure distances between points | P2 | Backlog |
-| MAP-097 | [#98](https://github.com/battincik/maps.coreor.net/issues/98) | Select multiple map features | P2 | Backlog |
-| MAP-098 | [#99](https://github.com/battincik/maps.coreor.net/issues/99) | Edit, split and merge geometry | P2 | Backlog |
-| MAP-099 | [#100](https://github.com/battincik/maps.coreor.net/issues/100) | Undo and redo map edits | P2 | Backlog |
+| MAP-091 | [#92](https://github.com/battincik/maps.coreor.net/issues/92) | Draw point features | P2 | In Review |
+| MAP-092 | [#93](https://github.com/battincik/maps.coreor.net/issues/93) | Draw lines and paths | P2 | In Review |
+| MAP-093 | [#94](https://github.com/battincik/maps.coreor.net/issues/94) | Draw polygons | P2 | In Review |
+| MAP-094 | [#95](https://github.com/battincik/maps.coreor.net/issues/95) | Draw circles and radius buffers | P2 | In Review |
+| MAP-095 | [#96](https://github.com/battincik/maps.coreor.net/issues/96) | Calculate area and perimeter | P2 | In Review |
+| MAP-096 | [#97](https://github.com/battincik/maps.coreor.net/issues/97) | Measure distances between points | P2 | In Review |
+| MAP-097 | [#98](https://github.com/battincik/maps.coreor.net/issues/98) | Select multiple map features | P2 | In Review |
+| MAP-098 | [#99](https://github.com/battincik/maps.coreor.net/issues/99) | Edit, split and merge geometry | P2 | In Progress |
+| MAP-099 | [#100](https://github.com/battincik/maps.coreor.net/issues/100) | Undo and redo map edits | P2 | In Review |
 | MAP-100 | [#101](https://github.com/battincik/maps.coreor.net/issues/101) | Export GeoJSON | P2 | Backlog |
 | MAP-101 | [#102](https://github.com/battincik/maps.coreor.net/issues/102) | Import KML and GPX files | P2 | Backlog |
 | MAP-102 | [#103](https://github.com/battincik/maps.coreor.net/issues/103) | Generate point density heatmaps | P2 | Backlog |
-| MAP-103 | [#104](https://github.com/battincik/maps.coreor.net/issues/104) | Find nearest features | P2 | Backlog |
+| MAP-103 | [#104](https://github.com/battincik/maps.coreor.net/issues/104) | Find nearest features | P2 | In Progress |
 | MAP-104 | [#105](https://github.com/battincik/maps.coreor.net/issues/105) | Point-in-polygon queries | P2 | Backlog |
 | MAP-105 | [#106](https://github.com/battincik/maps.coreor.net/issues/106) | Polygon intersection analysis | P2 | Backlog |
 | MAP-106 | [#107](https://github.com/battincik/maps.coreor.net/issues/107) | Search POIs along route corridors | P2 | Backlog |

@@ -8,8 +8,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 2,
@@ -17,8 +18,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 3,
@@ -26,8 +28,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 4,
@@ -35,8 +38,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 5,
@@ -44,8 +48,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 6,
@@ -53,8 +58,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 7,
@@ -62,8 +68,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 8,
@@ -71,8 +78,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 9,
@@ -80,8 +88,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 10,
@@ -89,8 +98,9 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P0",
-      "status": "In Review",
-      "implementation_status": "Done"
+      "status": "Done",
+      "implementation_status": "Done",
+      "qa_issue": 147
     },
     {
       "id": 11,
@@ -98,8 +108,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 12,
@@ -107,8 +119,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 13,
@@ -116,8 +130,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 14,
@@ -152,8 +168,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Progress",
+      "implementation_status": "Partial",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 18,
@@ -161,8 +179,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Progress",
+      "implementation_status": "Partial",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 19,
@@ -170,8 +190,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 20,
@@ -179,8 +201,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 21,
@@ -188,8 +212,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 22,
@@ -197,8 +223,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 23,
@@ -206,8 +234,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 24,
@@ -215,8 +245,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 25,
@@ -224,8 +256,10 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 26,
@@ -818,8 +852,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 92,
@@ -827,8 +863,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 93,
@@ -836,8 +874,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 94,
@@ -845,8 +885,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 95,
@@ -854,8 +896,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 96,
@@ -863,8 +907,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 97,
@@ -872,8 +918,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 98,
@@ -881,8 +929,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Progress",
+      "implementation_status": "Partial",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 99,
@@ -890,8 +940,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Review",
+      "implementation_status": "Done",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 100,
@@ -926,8 +978,10 @@
       "category": "Spatial Tools",
       "phase": 5,
       "priority": "P2",
-      "status": "Backlog",
-      "implementation_status": "Not started"
+      "status": "In Progress",
+      "implementation_status": "Partial",
+      "pull_request": 146,
+      "qa_issue": 150
     },
     {
       "id": 104,
