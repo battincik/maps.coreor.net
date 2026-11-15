@@ -54,7 +54,7 @@ export default function MapExplorer() {
     const map=new maplibregl.Map({
       container:container.current,style:styleURL('dark'),center:valid?[view![0],view![1]]:DEFAULT_CENTER,zoom:valid?view![2]:12.5,
       pitch:valid?Math.min(85,Math.max(0,view![4])):0,bearing:valid?view![3]:0,attributionControl:{compact:true},
-      preserveDrawingBuffer:true,
+      canvasContextAttributes:{preserveDrawingBuffer:true},
       cooperativeGestures:false,renderWorldCopies:true
     });
     mapRef.current=map;
@@ -80,7 +80,7 @@ export default function MapExplorer() {
     const map=mapInstance;if(!map)return;
     const applyImagery=()=>{if(map.isStyleLoaded())syncHybridImagery(map,hybrid)};
     map.on('style.load',applyImagery);applyImagery();
-    return()=>map.off('style.load',applyImagery);
+    return()=>{map.off('style.load',applyImagery);};
   },[mapInstance,hybrid]);
   const toggleGlobe=()=>{
     const next=!globe;setGlobe(next);
