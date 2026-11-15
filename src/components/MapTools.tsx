@@ -162,9 +162,25 @@ export default function MapTools({map,onError}:{map:MapInstance|null;onError:(me
           draftRef.current={points:[]};setDraft({points:[]});
         }
       }else if(m==='nearest'){
-        const match=nearestFeature(point,featureRef.current);
-        setNearest(match?{name:match.feature.properties.name,distance:match.distance}:null);
-        if(match)choose(match.feature.id);
+        const saved=nearestFeature(point,featureRef.current);
+        let closest=saved?{name:saved.feature.properties.name+' (saved)',distance:saved.distance}:null;
+        let useSaved=!!saved;
+        // Query only visible POI symbol layers. This does not claim exhaustive global POI coverage.
+        const symbolLayers=map.getStyle().layers.filter(layer=>layer.type==='symbol'&&/poi|amenity|shop|school|hospital|restaurant|cafe|retail/i.test(layer.id)).map(layer=>layer.id);
+        if(symbolLayers.length){
+          const x=e.point.x,y=e.point.y;
+          const rendered=map.queryRenderedFeatures([[x-150,y-150],[x+150,y+150]],{layers:symbolLayers});
+          for(const feature of rendered){
+            if(feature.geometry.type!=='Point')continue;
+            const coords=feature.geometry.coordinates;
+            const label=feature.properties?.['name:tr']||feature.properties?.name||feature.properties?.['name:en'];
+            if(!label||!Array.isArray(coords)||coords.length<2)continue;
+            const meters=distanceMeters(point,[Number(coords[0]),Number(coords[1])]);
+            if(!closest||meters<closest.distance){closest={name:String(label)+' (visible POI)',distance:meters};useSaved=false;}
+          }
+        }
+        setNearest(closest);
+        if(useSaved&&saved)choose(saved.feature.id);
       }else if(m==='select'){
         const layers=visibleLayers(map);
         const hits=layers.length?map.queryRenderedFeatures(e.point,{layers}):[];
@@ -345,7 +361,7 @@ export default function MapTools({map,onError}:{map:MapInstance|null;onError:(me
           <div className="section-title">Export & share</div>
           <div className="tool-buttons"><button onClick={exportGeo} disabled={!features.length}><Download size={15}/> GeoJSON</button><button onClick={screenshot}><Download size={15}/> PNG map</button><button onClick={share}><Share2 size={15}/> Share view</button></div>
           {message&&<div className="tool-result" role="status">{message}</div>}
-          <p className="muted">Nearest search checks your saved annotations only. Polygon merge and topological boolean operations require a dedicated geometry engine.</p>
+          <p className="muted">Nearest search checks saved annotations and currently rendered POIs. It is not a global places database. Polygon merge and topological boolean operations require a dedicated geometry engine.</p>
         </div>
       </motion.section>}
     </AnimatePresence>
