@@ -16,8 +16,7 @@ type Draft={points:Position[];radius?:number};
 const collection=(features:MapFeature[])=>({type:'FeatureCollection' as const,features:features.map(f=>({...f,properties:{...f.properties,_fid:f.id}}))});
 const visibleLayers=(map:MapInstance)=>LAYERS.filter(id=>!!map.getLayer(id));
 
-export default function MapTools({map,onError}:{map:MapInstance|null;onError:(message:string)=>void}) {
-  const [opened,setOpened]=useState(false);
+export default function MapTools({map,onError,opened,setOpened}:{map:MapInstance|null;onError:(message:string)=>void;opened:boolean;setOpened:React.Dispatch<React.SetStateAction<boolean>>}) {
   const [mode,setMode]=useState<Mode>('browse');
   const [features,setFeatures]=useState<MapFeature[]>([]);
   const [selected,setSelected]=useState<string[]>([]);
@@ -326,9 +325,8 @@ export default function MapTools({map,onError}:{map:MapInstance|null;onError:(me
     {id:'edit',label:'Edit vertices',hint:'Select a shape, drag white handles'}
   ];
   return <>
-    <button className={'tools-trigger '+(opened?'active':'')} type="button" aria-expanded={opened} aria-label="Drawing and map tools" data-tooltip="Explore & draw tools" onClick={()=>setOpened(x=>!x)}><PenLine size={19}/></button>
     <AnimatePresence>
-      {opened&&<motion.section className="tools-panel glass" initial={shouldReduce?false:{opacity:0,x:18,scale:.98}} animate={{opacity:1,x:0,scale:1}} exit={{opacity:0,x:12,scale:.98}} transition={{type:'spring',stiffness:390,damping:35}}>
+      {opened&&<motion.section id="coreor-drawing-tools" className="tools-panel glass" initial={shouldReduce?false:{opacity:0,x:18,scale:.98}} animate={{opacity:1,x:0,scale:1}} exit={{opacity:0,x:12,scale:.98}} transition={{type:'spring',stiffness:390,damping:35}}>
         <div className="panel-head"><div><div className="eyebrow">MAP WORKSPACE</div><h2>Explore & Draw</h2></div><button className="icon-button" aria-label="Close tools" onClick={()=>{setOpened(false);changeMode('browse')}}><X size={17}/></button></div>
         <div className="tools-scroll">
           <p className="muted">Your annotations stay on this device. No account or tracking required.</p>

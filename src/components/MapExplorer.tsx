@@ -3,7 +3,7 @@ import {useCallback,useEffect,useRef,useState} from 'react';
 import * as maplibregl from 'maplibre-gl';
 import type {Map as MapInstance} from 'maplibre-gl';
 import {AnimatePresence,motion,useReducedMotion} from 'motion/react';
-import {Map, Layers, Box, Compass, Crosshair, ZoomIn, ZoomOut, X, MapPin, SlidersHorizontal, RotateCcw, Search, Globe2, Maximize2, Satellite, RotateCw} from 'lucide-react';
+import {Map, Layers, Box, Compass, Crosshair, ZoomIn, ZoomOut, X, MapPin, SlidersHorizontal, RotateCcw, Search, Globe2, Maximize2, Satellite, RotateCw, PenLine} from 'lucide-react';
 import MapTools from './MapTools';
 import LayerManager from './LayerManager';
 import {syncHybridImagery,type ImageryProvider} from '@/lib/maps/imagery';
@@ -21,6 +21,7 @@ export default function MapExplorer() {
   const [error,setError]=useState('');
   const [theme,setTheme]=useState<Theme>('dark');
   const [panel,setPanel]=useState<Panel>(null);
+  const [toolsOpen,setToolsOpen]=useState(false);
   const [filters,setFilters]=useState<MapFilters>(initialFilters);
   const [locale,setLocale]=useState<Locale>('tr');
   const [roadColor,setRoadColor]=useState('#7c8b99');
@@ -119,6 +120,7 @@ export default function MapExplorer() {
       <div className="header-actions">
         <button onClick={()=>setPanel(panel==='view'?null:'view')} aria-label="Görünüm ayarları" title="Görünüm"><SlidersHorizontal size={18}/><span>Görünüm</span></button>
         <button onClick={()=>setPanel(panel==='layers'?null:'layers')} aria-label="Katmanları aç" title="Katmanlar"><Layers size={18}/><span>Katmanlar</span></button>
+        <button className={toolsOpen?'header-tools-button active':'header-tools-button'} data-tooltip="Explore & draw tools" type="button" aria-label="Drawing and map tools" aria-expanded={toolsOpen} aria-controls="coreor-drawing-tools" onClick={()=>setToolsOpen(open=>!open)}><PenLine size={18}/><span>Draw tools</span></button>
       </div>
     </header>
     <div className="map-actions" role="toolbar" aria-label="Map navigation controls">
@@ -166,7 +168,7 @@ export default function MapExplorer() {
         </div>}
       </motion.aside>}
     </AnimatePresence>
-    <MapTools map={mapInstance} onError={setError}/>
+    <MapTools map={mapInstance} onError={setError} opened={toolsOpen} setOpened={setToolsOpen}/>
     <div className="footer"><span><span className="status"/> {ready?'Harita hazır':'Harita yükleniyor'}</span><span>{zoom.toFixed(1)}× zoom</span><span>© OpenStreetMap contributors</span></div>
     {error&&<div className="error-banner" role="alert">{error}<button onClick={()=>setError('')} aria-label="Hatayı kapat"><X size={14}/></button></div>}
   </main>;
