@@ -1,21 +1,18 @@
 import type {Map as MapInstance} from 'maplibre-gl';
-const SOURCE='coreor-nasa-blue-marble';
+export type ImageryProvider='sentinel'|'nasa';
 const LAYER='coreor-hybrid-imagery';
-/** NASA Blue Marble is global/continental low-resolution imagery, not street-level satellite coverage. */
-export function syncHybridImagery(map:MapInstance,enabled:boolean){
-  if(!map.isStyleLoaded())return;
-  if(!enabled){
-    if(map.getLayer(LAYER))map.removeLayer(LAYER);
-    if(map.getSource(SOURCE))map.removeSource(SOURCE);
-    return;
-  }
-  if(!map.getSource(SOURCE))map.addSource(SOURCE,{
-    type:'raster',
-    tiles:['https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_NextGeneration/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg'],
-    tileSize:256,minzoom:0,maxzoom:8,attribution:'Imagery: NASA GIBS / Blue Marble Next Generation'
-  });
-  if(!map.getLayer(LAYER)){
-    const firstLabel=map.getStyle().layers.find(layer=>layer.type==='symbol')?.id;
-    map.addLayer({id:LAYER,type:'raster',source:SOURCE,paint:{'raster-opacity':.85,'raster-fade-duration':200}},firstLabel);
-  }
+const providers={
+ sentinel:{id:'coreor-sentinel-2016',url:'https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/g/{z}/{y}/{x}.jpg',maxzoom:13,attribution:'EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016 & 2017) · CC BY 4.0'},
+ nasa:{id:'coreor-nasa-blue-marble',url:'https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_NextGeneration/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg',maxzoom:8,attribution:'NASA GIBS / Blue Marble Next Generation'}
+};
+/** Sentinel 2016 CC BY 4.0 permits commercial use with attribution. Newer EOX mosaics do not. */
+export function syncHybridImagery(map:MapInstance,enabled:boolean,provider:ImageryProvider='sentinel'){
+ if(!map.isStyleLoaded())return;
+ if(map.getLayer(LAYER))map.removeLayer(LAYER);
+ for(const item of Object.values(providers))if(map.getSource(item.id))map.removeSource(item.id);
+ if(!enabled)return;
+ const chosen=providers[provider];
+ map.addSource(chosen.id,{type:'raster',tiles:[chosen.url],tileSize:256,minzoom:0,maxzoom:chosen.maxzoom,attribution:chosen.attribution});
+ const symbol=map.getStyle().layers.find(x=>x.type==='symbol')?.id;
+ map.addLayer({id:LAYER,type:'raster',source:chosen.id,paint:{'raster-opacity':.88,'raster-fade-duration':200}},symbol);
 }

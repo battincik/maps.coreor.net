@@ -257,7 +257,7 @@ export default function MapTools({map,onError}:{map:MapInstance|null;onError:(me
       const canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;
       const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas unavailable');
       ctx.drawImage(image,0,0);ctx.fillStyle='#000b';ctx.fillRect(0,canvas.height-34*devicePixelRatio,canvas.width,34*devicePixelRatio);
-      ctx.font=(12*devicePixelRatio)+'px sans-serif';ctx.fillStyle='#fff';ctx.fillText('© OpenStreetMap contributors · NASA GIBS when imagery enabled',12*devicePixelRatio,canvas.height-13*devicePixelRatio);
+      ctx.font=(12*devicePixelRatio)+'px sans-serif';ctx.fillStyle='#fff';ctx.fillText(map.getSource('coreor-sentinel-2016')?'© OpenStreetMap contributors · EOxCloudless 2016 (Copernicus Sentinel data) CC BY 4.0':map.getSource('coreor-nasa-blue-marble')?'© OpenStreetMap contributors · NASA GIBS':'© OpenStreetMap contributors',12*devicePixelRatio,canvas.height-13*devicePixelRatio);
       const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download='coreor-map.png';a.click();
     }catch{onError('Screenshot unavailable. Check tile CORS permissions.');}
   };

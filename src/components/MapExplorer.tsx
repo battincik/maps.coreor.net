@@ -5,7 +5,8 @@ import type {Map as MapInstance} from 'maplibre-gl';
 import {AnimatePresence,motion,useReducedMotion} from 'motion/react';
 import {Map, Layers, Box, Compass, Crosshair, ZoomIn, ZoomOut, X, MapPin, SlidersHorizontal, RotateCcw, Search, Globe2, Maximize2, Satellite, RotateCw} from 'lucide-react';
 import MapTools from './MapTools';
-import {syncHybridImagery} from '@/lib/maps/imagery';
+import LayerManager from './LayerManager';
+import {syncHybridImagery,type ImageryProvider} from '@/lib/maps/imagery';
 import {applyCartography,syncBuildings,syncTerrain} from '@/lib/maps/cartography';
 import {initialFilters,styleURL,themes,type Theme,type Locale,type MapFilters} from '@/lib/maps/types';
 
@@ -31,6 +32,7 @@ export default function MapExplorer() {
   const [mapInstance,setMapInstance]=useState<MapInstance|null>(null);
   const [globe,setGlobe]=useState(false);
   const [hybrid,setHybrid]=useState(false);
+  const [imageryProvider,setImageryProvider]=useState<ImageryProvider>('sentinel');
   const [bearing,setBearing]=useState(0);
   const prefersReducedMotion=useReducedMotion();
   const optionsRef=useRef({filters,locale,roadColor,roadWidth,threeD,terrain});
@@ -78,10 +80,10 @@ export default function MapExplorer() {
 
   useEffect(()=>{
     const map=mapInstance;if(!map)return;
-    const applyImagery=()=>{if(map.isStyleLoaded())syncHybridImagery(map,hybrid)};
+    const applyImagery=()=>{if(map.isStyleLoaded())syncHybridImagery(map,hybrid,imageryProvider)};
     map.on('style.load',applyImagery);applyImagery();
     return()=>{map.off('style.load',applyImagery);};
-  },[mapInstance,hybrid]);
+  },[mapInstance,hybrid,imageryProvider]);
   const toggleGlobe=()=>{
     const next=!globe;setGlobe(next);
     try { mapRef.current?.setProjection({type:next?'globe':'mercator'}); }
@@ -139,13 +141,17 @@ export default function MapExplorer() {
         {panel==='layers' && <div className="panel-body">
           <div className="section-title">Harita teması <span>{themes.length} stil</span></div>
           <div className="theme-grid">{themes.map(t=><button key={t.id} className={'theme-card '+(t.id===theme?'selected':'')} onClick={()=>setMapTheme(t.id)}><span className="theme-preview" style={{background:t.accent}}/><span>{t.title}</span>{t.id===theme&&<span className="selected-dot"/>}</button>)}</div>
-          <div className="section-title">Detay filtreleri</div>
+          <LayerManager map={mapInstance}/><div className="section-title">Detail filters</div>
           {([['roads','Ana yollar'],['minorRoads','Ara sokaklar'],['parks','Parklar ve ormanlar'],['water','Su alanları'],['poi','Önemli yerler (POI)'],['labels','Yer etiketleri'],['buildings','Binalar']] as [keyof MapFilters,string][]).map(([key,label])=><label className="toggle-row" key={key}><span>{label}</span><input type="checkbox" checked={filters[key]} onChange={()=>changeFilter(key)}/><span className="toggle-track"/></label>)}
         </div>}
         {panel==='view' && <div className="panel-body">
           <div className="section-title">Kamera</div>
           <button className="choice" onClick={toggle3D}><Box size={17}/> 3D binalar <span>{threeD?'Açık':'Kapalı'}</span></button>
           <label className="toggle-row"><span>3D arazi</span><input type="checkbox" checked={terrain} onChange={e=>setTerrain(e.target.checked)}/><span className="toggle-track"/></label>
+          <div className="section-title">Satellite imagery</div>
+          <label className="toggle-row"><span>Hybrid imagery and street labels</span><input type="checkbox" checked={hybrid} onChange={e=>setHybrid(e.target.checked)}/><span className="toggle-track"/></label>
+          <select className="imagery-select" aria-label="Imagery provider" value={imageryProvider} onChange={e=>setImageryProvider(e.target.value as ImageryProvider)}><option value="sentinel">Sentinel-2 2016 · CC BY 4.0</option><option value="nasa">NASA Blue Marble · Global</option></select>
+          <p className="muted">Sentinel is historical imagery (native zoom ≤13). NASA is a low-resolution global composite (native zoom ≤8). Imagery is provider-dependent and must display attribution.</p>
           <div className="section-title">Harita dili</div>
           <div className="segmented"><button className={locale==='tr'?'active':''} onClick={()=>setLocale('tr')}>Türkçe</button><button className={locale==='en'?'active':''} onClick={()=>setLocale('en')}>English</button></div>
           <div className="section-title">Yollar</div>
