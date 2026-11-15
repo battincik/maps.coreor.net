@@ -88,8 +88,8 @@ export default function MapExplorer() {
     catch {setError('Globe projection is unavailable for this map style.');setGlobe(false);}
   };
   const toggleFullscreen=async()=>{
-    const el=mapRef.current?.getContainer();if(!el)return;
-    try {if(document.fullscreenElement)await document.exitFullscreen();else await el.requestFullscreen();mapRef.current?.resize();}
+    const el=mapRef.current?.getContainer().parentElement;if(!el)return;
+    try {if(document.fullscreenElement)await document.exitFullscreen();else await el.requestFullscreen();requestAnimationFrame(()=>mapRef.current?.resize());}
     catch {setError('Fullscreen is not available on this device.');}
   };
   const setMapTheme=(next:Theme)=>{
