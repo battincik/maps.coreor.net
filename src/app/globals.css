@@ -46,3 +46,85 @@
 .advanced-layer-label small{font-size:9px;color:#888;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
 .advanced-layer-row>button:not(.layer-visibility){border:1px solid #383838;background:#222;color:#eee;border-radius:7px;width:28px;height:28px;display:grid;place-items:center}
 .advanced-layer-row button:disabled{opacity:.3}
+
+/* Immediate AMOLED tooltips for the right-side map toolbar and drawing launcher.
+   CSS-only: no worker, portal, timer or event listener needed. Keyboard users
+   get the same hint on focus; reduced-motion removes the transition. */
+.map-actions button[data-tooltip],.tools-trigger[data-tooltip]{
+  position:relative;
+  isolation:isolate;
+}
+.map-actions button[data-tooltip]::after,
+.tools-trigger[data-tooltip]::after{
+  content:attr(data-tooltip);
+  position:absolute;
+  right:calc(100% + 13px);
+  top:50%;
+  z-index:30;
+  display:block;
+  width:max-content;
+  max-width:min(245px,calc(100vw - 90px));
+  padding:9px 12px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:10px;
+  background:#050505;
+  color:#f4f4f5;
+  box-shadow:0 12px 32px rgba(0,0,0,.78),inset 0 1px 0 rgba(255,255,255,.06);
+  font:500 12px/1.35 Inter,ui-sans-serif,system-ui,sans-serif;
+  letter-spacing:.01em;
+  white-space:normal;
+  text-align:left;
+  text-transform:none;
+  pointer-events:none;
+  opacity:0;
+  visibility:hidden;
+  transform:translate(5px,-50%) scale(.98);
+  transition:opacity .14s ease-out,transform .14s cubic-bezier(.2,.7,.2,1),visibility 0s linear .14s;
+}
+.map-actions button[data-tooltip]::before,
+.tools-trigger[data-tooltip]::before{
+  content:"";
+  position:absolute;
+  right:calc(100% + 7px);
+  top:50%;
+  z-index:31;
+  width:9px;
+  height:9px;
+  background:#050505;
+  border-top:1px solid rgba(255,255,255,.18);
+  border-right:1px solid rgba(255,255,255,.18);
+  pointer-events:none;
+  opacity:0;
+  visibility:hidden;
+  transform:translate(5px,-50%) rotate(45deg);
+  transition:opacity .14s ease-out,transform .14s ease-out,visibility 0s linear .14s;
+}
+@media (hover:hover) and (pointer:fine){
+  .map-actions button[data-tooltip]:hover::after,
+  .map-actions button[data-tooltip]:hover::before,
+  .tools-trigger[data-tooltip]:hover::after,
+  .tools-trigger[data-tooltip]:hover::before{
+    opacity:1;visibility:visible;
+    transition-delay:0s;
+  }
+  .map-actions button[data-tooltip]:hover::after,
+  .tools-trigger[data-tooltip]:hover::after{transform:translate(0,-50%) scale(1)}
+  .map-actions button[data-tooltip]:hover::before,
+  .tools-trigger[data-tooltip]:hover::before{transform:translate(0,-50%) rotate(45deg)}
+}
+.map-actions button[data-tooltip]:focus-visible::after,
+.map-actions button[data-tooltip]:focus-visible::before,
+.tools-trigger[data-tooltip]:focus-visible::after,
+.tools-trigger[data-tooltip]:focus-visible::before{
+  opacity:1;visibility:visible;transition-delay:0s;
+}
+.map-actions button[data-tooltip]:focus-visible::after,
+.tools-trigger[data-tooltip]:focus-visible::after{transform:translate(0,-50%) scale(1)}
+.map-actions button[data-tooltip]:focus-visible::before,
+.tools-trigger[data-tooltip]:focus-visible::before{transform:translate(0,-50%) rotate(45deg)}
+@media (prefers-reduced-motion:reduce){
+  .map-actions button[data-tooltip]::after,
+  .map-actions button[data-tooltip]::before,
+  .tools-trigger[data-tooltip]::after,
+  .tools-trigger[data-tooltip]::before{transition:none}
+}

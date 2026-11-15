@@ -121,19 +121,19 @@ export default function MapExplorer() {
         <button onClick={()=>setPanel(panel==='layers'?null:'layers')} aria-label="Katmanları aç" title="Katmanlar"><Layers size={18}/><span>Katmanlar</span></button>
       </div>
     </header>
-    <div className="map-actions">
-      <button title="Yakınlaştır" aria-label="Yakınlaştır" onClick={()=>adjustZoom(1)}><ZoomIn size={18}/></button>
-      <button title="Uzaklaştır" aria-label="Uzaklaştır" onClick={()=>adjustZoom(-1)}><ZoomOut size={18}/></button>
-      <div className="action-break"/>
-      <button title="Konumum" aria-label="Konumum" onClick={goToMyLocation}><Crosshair size={18}/></button>
-      <button title="Rotate left" aria-label="Rotate map left" onClick={()=>animate({bearing:(mapRef.current?.getBearing()??0)-30})}><RotateCcw size={18}/></button>
-      <button title="Rotate right" aria-label="Rotate map right" onClick={()=>animate({bearing:(mapRef.current?.getBearing()??0)+30})}><RotateCw size={18}/></button>
-      <button title="Reset north" aria-label="Reset north" onClick={()=>animate({bearing:0})}><Compass size={18} style={{transform:'rotate('+(-bearing)+'deg)'}}/></button>
-      <button title={threeD?'2D':'3D'} aria-label={threeD?'2D görünüme geç':'3D görünüme geç'} aria-pressed={threeD} className={threeD?'on':''} onClick={toggle3D}><Box size={18}/></button>
-      <button title="Globe projection" aria-label="Toggle globe projection" aria-pressed={globe} className={globe?'on':''} onClick={toggleGlobe}><Globe2 size={18}/></button>
-      <button title="Hybrid imagery" aria-label="Toggle hybrid NASA imagery" aria-pressed={hybrid} className={hybrid?'on':''} onClick={()=>setHybrid(x=>!x)}><Satellite size={18}/></button>
-      <button title="Fullscreen" aria-label="Toggle fullscreen" onClick={toggleFullscreen}><Maximize2 size={18}/></button>
-      <button title="Reset camera" aria-label="Reset camera" onClick={()=>animate({center:DEFAULT_CENTER,zoom:12.5,pitch:0,bearing:0})}><RotateCcw size={18}/></button>
+    <div className="map-actions" role="toolbar" aria-label="Map navigation controls">
+      <button data-tooltip="Zoom in" aria-label="Zoom in" onClick={()=>adjustZoom(1)}><ZoomIn size={18}/></button>
+      <button data-tooltip="Zoom out" aria-label="Zoom out" onClick={()=>adjustZoom(-1)}><ZoomOut size={18}/></button>
+      <div className="action-break" role="separator"/>
+      <button data-tooltip="My location" aria-label="Go to my location" onClick={goToMyLocation}><Crosshair size={18}/></button>
+      <button data-tooltip="Rotate left · 30°" aria-label="Rotate map left by 30 degrees" onClick={()=>animate({bearing:(mapRef.current?.getBearing()??0)-30})}><RotateCcw size={18}/></button>
+      <button data-tooltip="Rotate right · 30°" aria-label="Rotate map right by 30 degrees" onClick={()=>animate({bearing:(mapRef.current?.getBearing()??0)+30})}><RotateCw size={18}/></button>
+      <button data-tooltip="Reset to north" aria-label="Reset north" onClick={()=>animate({bearing:0})}><Compass size={18} style={{transform:'rotate('+(-bearing)+'deg)'}}/></button>
+      <button data-tooltip={threeD?'Switch to 2D':'Switch to 3D'} aria-label={threeD?'Switch to 2D':'Switch to 3D'} aria-pressed={threeD} className={threeD?'on':''} onClick={toggle3D}><Box size={18}/></button>
+      <button data-tooltip={globe?'Switch to flat map':'Switch to globe'} aria-label={globe?'Switch to flat map':'Switch to globe'} aria-pressed={globe} className={globe?'on':''} onClick={toggleGlobe}><Globe2 size={18}/></button>
+      <button data-tooltip={hybrid?'Disable satellite imagery':'Enable satellite imagery'} aria-label={hybrid?'Disable satellite imagery':'Enable satellite imagery'} aria-pressed={hybrid} className={hybrid?'on':''} onClick={()=>setHybrid(x=>!x)}><Satellite size={18}/></button>
+      <button data-tooltip="Toggle fullscreen" aria-label="Toggle fullscreen" onClick={toggleFullscreen}><Maximize2 size={18}/></button>
+      <button data-tooltip="Reset map view" aria-label="Reset map view" onClick={()=>animate({center:DEFAULT_CENTER,zoom:12.5,pitch:0,bearing:0})}><RotateCcw size={18}/></button>
     </div>
     <AnimatePresence mode="wait">
       {panel && <motion.aside key={panel} className="panel glass" {...compactMotion}>
