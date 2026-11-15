@@ -256,8 +256,26 @@ export default function MapTools({map,onError}:{map:MapInstance|null;onError:(me
       const image=map.getCanvas();
       const canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;
       const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas unavailable');
-      ctx.drawImage(image,0,0);ctx.fillStyle='#000b';ctx.fillRect(0,canvas.height-34*devicePixelRatio,canvas.width,34*devicePixelRatio);
-      ctx.font=(12*devicePixelRatio)+'px sans-serif';ctx.fillStyle='#fff';ctx.fillText(map.getSource('coreor-sentinel-2016')?'© OpenStreetMap contributors · EOxCloudless 2016 (Copernicus Sentinel data) CC BY 4.0':map.getSource('coreor-nasa-blue-marble')?'© OpenStreetMap contributors · NASA GIBS':'© OpenStreetMap contributors',12*devicePixelRatio,canvas.height-13*devicePixelRatio);
+      ctx.drawImage(image,0,0);
+      const credit=map.getSource('coreor-sentinel-2016')
+        ?'© OpenStreetMap contributors · EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016 & 2017) · CC BY 4.0'
+        :map.getSource('coreor-nasa-blue-marble')
+          ?'© OpenStreetMap contributors · NASA GIBS / Blue Marble Next Generation'
+          :'© OpenStreetMap contributors';
+      const pixel=Math.max(1,window.devicePixelRatio||1);
+      ctx.font=(11*pixel)+'px sans-serif';
+      const maxWidth=canvas.width-22*pixel;
+      const lines:string[]=[];let line='';
+      for(const word of credit.split(' ')){
+        const candidate=line?line+' '+word:word;
+        if(ctx.measureText(candidate).width>maxWidth&&line){lines.push(line);line=word;}
+        else line=candidate;
+      }
+      if(line)lines.push(line);
+      const barHeight=Math.max(32,lines.length*16+12)*pixel;
+      ctx.fillStyle='rgba(0,0,0,.87)';ctx.fillRect(0,canvas.height-barHeight,canvas.width,barHeight);
+      ctx.fillStyle='#fff';
+      lines.forEach((text,index)=>ctx.fillText(text,11*pixel,canvas.height-barHeight+(index+1)*16*pixel));
       const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download='coreor-map.png';a.click();
     }catch{onError('Screenshot unavailable. Check tile CORS permissions.');}
   };
