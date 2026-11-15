@@ -3,7 +3,9 @@ import {useCallback,useEffect,useRef,useState} from 'react';
 import * as maplibregl from 'maplibre-gl';
 import type {Map as MapInstance} from 'maplibre-gl';
 import {AnimatePresence,motion,useReducedMotion} from 'motion/react';
-import {Map, Layers, Box, Mountain, Compass, Crosshair, ZoomIn, ZoomOut, X, Languages, MapPin, SlidersHorizontal, RotateCcw, Search, Route, ChevronDown} from 'lucide-react';
+import {Map, Layers, Box, Compass, Crosshair, ZoomIn, ZoomOut, X, MapPin, SlidersHorizontal, RotateCcw, Search, Globe2, Maximize2, Satellite, RotateCw} from 'lucide-react';
+import MapTools from './MapTools';
+import {syncHybridImagery} from '@/lib/maps/imagery';
 import {applyCartography,syncBuildings,syncTerrain} from '@/lib/maps/cartography';
 import {initialFilters,styleURL,themes,type Theme,type Locale,type MapFilters} from '@/lib/maps/types';
 
@@ -26,6 +28,10 @@ export default function MapExplorer() {
   const [terrain,setTerrain]=useState(false);
   const [query,setQuery]=useState('');
   const [zoom,setZoom]=useState(12.5);
+  const [mapInstance,setMapInstance]=useState<MapInstance|null>(null);
+  const [globe,setGlobe]=useState(false);
+  const [hybrid,setHybrid]=useState(false);
+  const [bearing,setBearing]=useState(0);
   const prefersReducedMotion=useReducedMotion();
   const optionsRef=useRef({filters,locale,roadColor,roadWidth,threeD,terrain});
   optionsRef.current={filters,locale,roadColor,roadWidth,threeD,terrain};
@@ -43,12 +49,19 @@ export default function MapExplorer() {
     // MapLibre v6 worker discovery can fail under Next.js Turbopack.
     // A same-origin Node.js route serves both the worker and its ESM dependency.
     maplibregl.setWorkerUrl('/api/maplibre/maplibre-gl-worker.mjs');
+    const view = new URLSearchParams(window.location.search).get('view')?.split(',').map(Number);
+    const valid = view?.length===5 && view.every(Number.isFinite) && Math.abs(view[0])<=180 && Math.abs(view[1])<=90 && view[2]>=0 && view[2]<=22;
     const map=new maplibregl.Map({
-      container:container.current,style:styleURL('dark'),center:DEFAULT_CENTER,zoom:12.5,
-      pitch:0,bearing:0,attributionControl:{compact:true},
+      container:container.current,style:styleURL('dark'),center:valid?[view![0],view![1]]:DEFAULT_CENTER,zoom:valid?view![2]:12.5,
+      pitch:valid?Math.min(85,Math.max(0,view![4])):0,bearing:valid?view![3]:0,attributionControl:{compact:true},
+      preserveDrawingBuffer:true,
       cooperativeGestures:false,renderWorldCopies:true
     });
     mapRef.current=map;
+    setMapInstance(map);
+    map.addControl(new maplibregl.ScaleControl({unit:'metric',maxWidth:120}),'bottom-left');
+    const onRotate=()=>setBearing(map.getBearing());
+    map.on('rotateend',onRotate);
     const loaded=()=>{setReady(true);setError('');apply(map);};
     const failed=(e:maplibregl.ErrorEvent)=>{
       const msg=e.error?.message||'Harita verisi yüklenemedi';
@@ -58,11 +71,27 @@ export default function MapExplorer() {
     map.on('style.load',loaded);
     map.on('error',failed);
     map.on('zoomend',onZoom);
-    return()=>{map.off('style.load',loaded);map.off('error',failed);map.off('zoomend',onZoom);map.remove();mapRef.current=null};
+    return()=>{map.off('style.load',loaded);map.off('error',failed);map.off('zoomend',onZoom);map.off('rotateend',onRotate);map.remove();mapRef.current=null};
   },[apply]);
 
   useEffect(()=>{const map=mapRef.current;if(map?.isStyleLoaded())apply(map)},[filters,locale,roadColor,roadWidth,threeD,terrain,apply]);
 
+  useEffect(()=>{
+    const map=mapInstance;if(!map)return;
+    const applyImagery=()=>{if(map.isStyleLoaded())syncHybridImagery(map,hybrid)};
+    map.on('style.load',applyImagery);applyImagery();
+    return()=>map.off('style.load',applyImagery);
+  },[mapInstance,hybrid]);
+  const toggleGlobe=()=>{
+    const next=!globe;setGlobe(next);
+    try { mapRef.current?.setProjection({type:next?'globe':'mercator'}); }
+    catch {setError('Globe projection is unavailable for this map style.');setGlobe(false);}
+  };
+  const toggleFullscreen=async()=>{
+    const el=mapRef.current?.getContainer();if(!el)return;
+    try {if(document.fullscreenElement)await document.exitFullscreen();else await el.requestFullscreen();mapRef.current?.resize();}
+    catch {setError('Fullscreen is not available on this device.');}
+  };
   const setMapTheme=(next:Theme)=>{
     setTheme(next);setReady(false);setError('');
     mapRef.current?.setStyle(styleURL(next),{diff:false});
@@ -95,9 +124,14 @@ export default function MapExplorer() {
       <button title="Uzaklaştır" aria-label="Uzaklaştır" onClick={()=>adjustZoom(-1)}><ZoomOut size={18}/></button>
       <div className="action-break"/>
       <button title="Konumum" aria-label="Konumum" onClick={goToMyLocation}><Crosshair size={18}/></button>
-      <button title="Kuzeye dön" aria-label="Kuzeye dön" onClick={()=>animate({bearing:0})}><Compass size={18}/></button>
+      <button title="Rotate left" aria-label="Rotate map left" onClick={()=>animate({bearing:(mapRef.current?.getBearing()??0)-30})}><RotateCcw size={18}/></button>
+      <button title="Rotate right" aria-label="Rotate map right" onClick={()=>animate({bearing:(mapRef.current?.getBearing()??0)+30})}><RotateCw size={18}/></button>
+      <button title="Reset north" aria-label="Reset north" onClick={()=>animate({bearing:0})}><Compass size={18} style={{transform:'rotate('+(-bearing)+'deg)'}}/></button>
       <button title={threeD?'2D':'3D'} aria-label={threeD?'2D görünüme geç':'3D görünüme geç'} aria-pressed={threeD} className={threeD?'on':''} onClick={toggle3D}><Box size={18}/></button>
-      <button title="Ankara'ya dön" aria-label="Ankara'ya dön" onClick={()=>animate({center:DEFAULT_CENTER,zoom:12.5,pitch:0,bearing:0})}><RotateCcw size={18}/></button>
+      <button title="Globe projection" aria-label="Toggle globe projection" aria-pressed={globe} className={globe?'on':''} onClick={toggleGlobe}><Globe2 size={18}/></button>
+      <button title="Hybrid imagery" aria-label="Toggle hybrid NASA imagery" aria-pressed={hybrid} className={hybrid?'on':''} onClick={()=>setHybrid(x=>!x)}><Satellite size={18}/></button>
+      <button title="Fullscreen" aria-label="Toggle fullscreen" onClick={toggleFullscreen}><Maximize2 size={18}/></button>
+      <button title="Reset camera" aria-label="Reset camera" onClick={()=>animate({center:DEFAULT_CENTER,zoom:12.5,pitch:0,bearing:0})}><RotateCcw size={18}/></button>
     </div>
     <AnimatePresence mode="wait">
       {panel && <motion.aside key={panel} className="panel glass" {...compactMotion}>
@@ -126,6 +160,7 @@ export default function MapExplorer() {
         </div>}
       </motion.aside>}
     </AnimatePresence>
+    <MapTools map={mapInstance} onError={setError}/>
     <div className="footer"><span><span className="status"/> {ready?'Harita hazır':'Harita yükleniyor'}</span><span>{zoom.toFixed(1)}× zoom</span><span>© OpenStreetMap contributors</span></div>
     {error&&<div className="error-banner" role="alert">{error}<button onClick={()=>setError('')} aria-label="Hatayı kapat"><X size={14}/></button></div>}
   </main>;
