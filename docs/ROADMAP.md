@@ -1,6 +1,6 @@
 # Coreor Maps — Development Roadmap
 
-> **144 GitHub Issues created and individually tracked.** First ten issues are **In Review**, not closed: draft PR #1 contains initial implementation, but visual and feature-level acceptance is still pending.
+> **144 GitHub Issues created and individually tracked.** The first ten features are **Implementation Done / QA Pending**: PR #1 contains their initial implementation, but browser acceptance and merge remain pending.
 
 ## Product standards
 - Map exploration is the default experience. Routing and markers appear only after explicit user action.
@@ -30,16 +30,16 @@ Suggested views: **Roadmap**, **Board by Status**, **Priority**, **Area**, **Cur
 
 | ID | Issue | Feature | Priority | Status |
 |---|---|---|---|---|
-| MAP-001 | [#2](https://github.com/battincik/maps.coreor.net/issues/2) | 2D and 3D map mode switching | P0 | In Review |
-| MAP-002 | [#3](https://github.com/battincik/maps.coreor.net/issues/3) | Extruded buildings with real-world heights | P0 | In Review |
-| MAP-003 | [#4](https://github.com/battincik/maps.coreor.net/issues/4) | 3D terrain elevation and hillshading | P0 | In Review |
-| MAP-004 | [#5](https://github.com/battincik/maps.coreor.net/issues/5) | Zoom-aware smart label density | P0 | In Review |
-| MAP-005 | [#6](https://github.com/battincik/maps.coreor.net/issues/6) | Customizable road colors and widths | P0 | In Review |
-| MAP-006 | [#7](https://github.com/battincik/maps.coreor.net/issues/7) | Road hierarchy: motorways, avenues and streets | P0 | In Review |
-| MAP-007 | [#8](https://github.com/battincik/maps.coreor.net/issues/8) | Distinct park, forest, water and land-use layers | P0 | In Review |
-| MAP-008 | [#9](https://github.com/battincik/maps.coreor.net/issues/9) | Category-specific POI icons | P0 | In Review |
-| MAP-009 | [#10](https://github.com/battincik/maps.coreor.net/issues/10) | Turkish and English map labels | P0 | In Review |
-| MAP-010 | [#11](https://github.com/battincik/maps.coreor.net/issues/11) | Smooth camera and navigation animations | P0 | In Review |
+| MAP-001 | [#2](https://github.com/battincik/maps.coreor.net/issues/2) | 2D and 3D map mode switching | P0 | Implementation Done / QA Pending |
+| MAP-002 | [#3](https://github.com/battincik/maps.coreor.net/issues/3) | Extruded buildings with real-world heights | P0 | Implementation Done / QA Pending |
+| MAP-003 | [#4](https://github.com/battincik/maps.coreor.net/issues/4) | 3D terrain elevation and hillshading | P0 | Implementation Done / QA Pending |
+| MAP-004 | [#5](https://github.com/battincik/maps.coreor.net/issues/5) | Zoom-aware smart label density | P0 | Implementation Done / QA Pending |
+| MAP-005 | [#6](https://github.com/battincik/maps.coreor.net/issues/6) | Customizable road colors and widths | P0 | Implementation Done / QA Pending |
+| MAP-006 | [#7](https://github.com/battincik/maps.coreor.net/issues/7) | Road hierarchy: motorways, avenues and streets | P0 | Implementation Done / QA Pending |
+| MAP-007 | [#8](https://github.com/battincik/maps.coreor.net/issues/8) | Distinct park, forest, water and land-use layers | P0 | Implementation Done / QA Pending |
+| MAP-008 | [#9](https://github.com/battincik/maps.coreor.net/issues/9) | Category-specific POI icons | P0 | Implementation Done / QA Pending |
+| MAP-009 | [#10](https://github.com/battincik/maps.coreor.net/issues/10) | Turkish and English map labels | P0 | Implementation Done / QA Pending |
+| MAP-010 | [#11](https://github.com/battincik/maps.coreor.net/issues/11) | Smooth camera and navigation animations | P0 | Implementation Done / QA Pending |
 | MAP-011 | [#12](https://github.com/battincik/maps.coreor.net/issues/12) | Free camera rotation | P1 | Backlog |
 | MAP-012 | [#13](https://github.com/battincik/maps.coreor.net/issues/13) | Reset map orientation to north | P1 | Backlog |
 | MAP-013 | [#14](https://github.com/battincik/maps.coreor.net/issues/14) | Full-screen map mode | P1 | Backlog |
