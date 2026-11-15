@@ -7,7 +7,7 @@ This project is a **map explorer first**. The route planner is not shown by defa
 - **Fullscreen:** use the map toolbar; the entire application shell enters fullscreen so controls remain usable.
 - **Globe:** toggle MapLibre's globe projection without recreating the map.
 - **Scale:** the bottom-left bar uses metric units and updates with map movement.
-- **Hybrid imagery:** opt-in NASA Blue Marble Next Generation tiles placed under vector labels. This is **low-resolution 0–8 zoom** composite imagery, not a street-level satellite layer.
+- **Hybrid imagery:** choose historical EOX Sentinel-2 Cloudless 2016 (CC BY 4.0, native zoom ≤13) or NASA Blue Marble (native zoom ≤8), under vector labels. Neither is current sub-meter imagery.
 - **Share:** copies a URL with center, zoom, pitch and bearing; opening the URL restores the view.
 - **Screenshot:** exports a canvas PNG and includes text attribution. Export can fail if a provider taints canvas due to CORS.
 
@@ -26,11 +26,15 @@ Open **Explore & Draw** from the map toolbar. The panel remains optional.
 | Nearest | Click the map to find the closest **saved annotation** |
 | Edit vertices | Select a shape, then drag white vertex handles |
 
+**Advanced basemap layers:** use the Layers panel → Advanced layer order for searching by layer/source, filtering layer type, visibility switches, ordering, and restoring original style order. Custom ordering resets when changing map style.
+
 **Editing** supports insertion of a vertex at the longest segment midpoint, splitting lines at a middle vertex, and merging two nearby lines when endpoints are within 50 meters. Polygon splitting and topological union are not provided.
 
 **Undo/Redo:** Ctrl/Cmd+Z, Ctrl/Cmd+Y or Cmd+Shift+Z; 50 committed snapshot states per browser session.
 
 **Exports:** GeoJSON for all saved shapes, and PNG for the current map view.
+
+**Nearest:** searches saved annotations and currently rendered POI symbol features (not all POIs worldwide).
 
 **Storage:** Annotations are kept in `localStorage` (key `coreor-maps-annotations-v1`) on the current browser/device. This is not an authenticated multi-device cloud sync service.
 

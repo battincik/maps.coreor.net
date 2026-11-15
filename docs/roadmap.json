@@ -168,8 +168,8 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "In Progress",
-      "implementation_status": "Partial",
+      "status": "In Review",
+      "implementation_status": "Done",
       "pull_request": 146,
       "qa_issue": 150
     },
@@ -179,8 +179,8 @@
       "category": "Map Experience",
       "phase": 1,
       "priority": "P1",
-      "status": "In Progress",
-      "implementation_status": "Partial",
+      "status": "In Review",
+      "implementation_status": "Done",
       "pull_request": 146,
       "qa_issue": 150
     },

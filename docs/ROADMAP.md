@@ -1,6 +1,6 @@
 # Coreor Maps — Development Roadmap
 
-> **144 GitHub Issues tracked.** MAP-001–MAP-010 are closed after merged PR #1 (implementation delivered; browser QA tracked in #147). PR #146 implements 18 further capabilities (In Review) and partially implements four broader ones (In Progress); browser QA is tracked in #150.
+> **144 GitHub Issues tracked.** MAP-001–MAP-010 are closed after merged PR #1 (implementation delivered; browser QA tracked in #147). PR #146 implements 20 further capabilities (In Review) and partially implements two broader ones (In Progress); browser QA is tracked in #150.
 
 ## Product standards
 - Map exploration is the default experience. Routing and markers appear only after explicit user action.
@@ -48,8 +48,8 @@ Suggested views: **Roadmap**, **Board by Status**, **Priority**, **Area**, **Cur
 | MAP-014 | [#15](https://github.com/battincik/maps.coreor.net/issues/15) | Visual map style editor | P1 | Backlog |
 | MAP-015 | [#16](https://github.com/battincik/maps.coreor.net/issues/16) | Save personal map themes | P1 | Backlog |
 | MAP-016 | [#17](https://github.com/battincik/maps.coreor.net/issues/17) | Import and export style JSON | P1 | Backlog |
-| MAP-017 | [#18](https://github.com/battincik/maps.coreor.net/issues/18) | Reorder map layers | P1 | In Progress |
-| MAP-018 | [#19](https://github.com/battincik/maps.coreor.net/issues/19) | Hybrid satellite imagery with street labels | P1 | In Progress |
+| MAP-017 | [#18](https://github.com/battincik/maps.coreor.net/issues/18) | Reorder map layers | P1 | In Review |
+| MAP-018 | [#19](https://github.com/battincik/maps.coreor.net/issues/19) | Hybrid satellite imagery with street labels | P1 | In Review |
 | MAP-019 | [#20](https://github.com/battincik/maps.coreor.net/issues/20) | Globe projection view | P1 | In Review |
 | MAP-020 | [#21](https://github.com/battincik/maps.coreor.net/issues/21) | Scalebar and map scale | P1 | In Review |
 | MAP-021 | [#22](https://github.com/battincik/maps.coreor.net/issues/22) | Measure distance on the map | P1 | In Review |
