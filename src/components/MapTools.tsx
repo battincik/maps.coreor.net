@@ -95,46 +95,76 @@ export default function MapTools({map,onError,opened,setOpened}:{map:MapInstance
   },[commit]);
   const cancelDraft=()=>{draftRef.current={points:[]};setDraft({points:[]});};
 
+  // MapLibre's isStyleLoaded() can become false immediately after another
+  // style.load listener changes paint/layout or adds a source. It must not gate
+  // annotation creation or setData: a style exists before every style.load event.
+  const syncDrawingData=useCallback((target:MapInstance)=>{
+    const annotations=featureRef.current;
+    const currentSelection=selectedRef.current;
+    const currentDraft=draftRef.current;
+    const currentMode=modeRef.current;
+    const source=target.getSource(MAIN) as GeoJSONSource|undefined;
+    if(!source)return;
+    source.setData(collection(annotations.map(f=>({...f,properties:{...f.properties,selected:currentSelection.includes(f.id)}}))));
+    const preview:MapFeature[]=[];
+    const points=currentDraft.points;
+    if(points.length) {
+      for(const p of points)preview.push(createFeature('point',[p]));
+      if(points.length>1)preview.push(createFeature('line',points));
+      if(currentMode==='polygon'&&points.length>=3)preview.push(createFeature('polygon',points));
+      if(currentMode==='circle'&&points.length===2)preview.push(createCircle(points[0],distanceMeters(points[0],points[1])));
+    }
+    (target.getSource(PREVIEW) as GeoJSONSource|undefined)?.setData(collection(preview));
+    const handles=currentMode==='edit'
+      ?currentSelection.flatMap(id=>{
+        const f=annotations.find(x=>x.id===id);
+        return f?vertices(f).map((point,index)=>({
+          ...createFeature('point',[point]),
+          properties:{kind:'point' as const,name:'Vertex',_fid:id,_vertex:index}
+        })):[];
+      })
+      :[];
+    (target.getSource(VERTICES) as GeoJSONSource|undefined)?.setData({type:'FeatureCollection',features:handles});
+  },[]);
+
   useEffect(()=>{
     if(!map)return;
     const ensureLayers=()=>{
-      if(!map.isStyleLoaded())return;
-      if(!map.getSource(MAIN))map.addSource(MAIN,{type:'geojson',data:EMPTY_FEATURES});
-      if(!map.getSource(PREVIEW))map.addSource(PREVIEW,{type:'geojson',data:EMPTY_FEATURES});
-      if(!map.getSource(VERTICES))map.addSource(VERTICES,{type:'geojson',data:EMPTY_FEATURES});
-      if(!map.getLayer(LAYERS[0]))map.addLayer({id:LAYERS[0],type:'fill',source:MAIN,filter:['==',['geometry-type'],'Polygon'],paint:{'fill-color':'#00ccd6','fill-opacity':.20,'fill-outline-color':'#72eff1'}});
-      if(!map.getLayer(LAYERS[1]))map.addLayer({id:LAYERS[1],type:'line',source:MAIN,filter:['==',['geometry-type'],'LineString'],paint:{'line-color':'#00ccd6','line-width':3,'line-opacity':.95}});
-      if(!map.getLayer('coreor-annotation-outline'))map.addLayer({id:'coreor-annotation-outline',type:'line',source:MAIN,filter:['==',['geometry-type'],'Polygon'],paint:{'line-color':'#55ecf1','line-width':2.5}});
-      if(!map.getLayer(LAYERS[2]))map.addLayer({id:LAYERS[2],type:'circle',source:MAIN,filter:['==',['geometry-type'],'Point'],paint:{'circle-radius':7,'circle-color':['case',['==',['get','kind'],'bookmark'],'#ffcf70','#00ccd6'],'circle-stroke-color':'#050505','circle-stroke-width':2}});
-      if(!map.getLayer('coreor-preview-fill'))map.addLayer({id:'coreor-preview-fill',type:'fill',source:PREVIEW,paint:{'fill-color':'#ffffff','fill-opacity':.10}});
-      if(!map.getLayer('coreor-preview-line'))map.addLayer({id:'coreor-preview-line',type:'line',source:PREVIEW,paint:{'line-color':'#fafafa','line-width':2,'line-dasharray':[3,2]}});
-      if(!map.getLayer('coreor-preview-point'))map.addLayer({id:'coreor-preview-point',type:'circle',source:PREVIEW,paint:{'circle-radius':5,'circle-color':'#f5f5f5','circle-stroke-color':'#111111','circle-stroke-width':2}});
-      if(!map.getLayer('coreor-vertex-points'))map.addLayer({id:'coreor-vertex-points',type:'circle',source:VERTICES,paint:{'circle-radius':7,'circle-color':'#ffffff','circle-stroke-color':'#00ccd6','circle-stroke-width':3}});
+      // Do not call isStyleLoaded() here; MapExplorer mutates cartography in
+      // another style.load listener and MapLibre marks the style as pending.
+      if(!map.getStyle())return;
+      try{
+        if(!map.getSource(MAIN))map.addSource(MAIN,{type:'geojson',data:EMPTY_FEATURES});
+        if(!map.getSource(PREVIEW))map.addSource(PREVIEW,{type:'geojson',data:EMPTY_FEATURES});
+        if(!map.getSource(VERTICES))map.addSource(VERTICES,{type:'geojson',data:EMPTY_FEATURES});
+        if(!map.getLayer(LAYERS[0]))map.addLayer({id:LAYERS[0],type:'fill',source:MAIN,filter:['==',['geometry-type'],'Polygon'],paint:{'fill-color':'#00ccd6','fill-opacity':.28,'fill-outline-color':'#72eff1'}});
+        if(!map.getLayer(LAYERS[1]))map.addLayer({id:LAYERS[1],type:'line',source:MAIN,filter:['==',['geometry-type'],'LineString'],paint:{'line-color':'#00ccd6','line-width':4,'line-opacity':1}});
+        if(!map.getLayer('coreor-annotation-outline'))map.addLayer({id:'coreor-annotation-outline',type:'line',source:MAIN,filter:['==',['geometry-type'],'Polygon'],paint:{'line-color':'#55ecf1','line-width':3}});
+        if(!map.getLayer(LAYERS[2]))map.addLayer({id:LAYERS[2],type:'circle',source:MAIN,filter:['==',['geometry-type'],'Point'],paint:{'circle-radius':8,'circle-color':['case',['==',['get','kind'],'bookmark'],'#ffcf70','#00ccd6'],'circle-stroke-color':'#050505','circle-stroke-width':2}});
+        if(!map.getLayer('coreor-preview-fill'))map.addLayer({id:'coreor-preview-fill',type:'fill',source:PREVIEW,paint:{'fill-color':'#00ccd6','fill-opacity':.12}});
+        if(!map.getLayer('coreor-preview-line'))map.addLayer({id:'coreor-preview-line',type:'line',source:PREVIEW,paint:{'line-color':'#fff','line-width':2.5,'line-dasharray':[3,2]}});
+        if(!map.getLayer('coreor-preview-point'))map.addLayer({id:'coreor-preview-point',type:'circle',source:PREVIEW,paint:{'circle-radius':6,'circle-color':'#fff','circle-stroke-color':'#111','circle-stroke-width':2}});
+        if(!map.getLayer('coreor-vertex-points'))map.addLayer({id:'coreor-vertex-points',type:'circle',source:VERTICES,paint:{'circle-radius':7,'circle-color':'#fff','circle-stroke-color':'#00ccd6','circle-stroke-width':3}});
+        // A style switch removes old custom sources. Restore saved geometries
+        // as soon as replacement sources exist, without waiting for another render.
+        syncDrawingData(map);
+      }catch(err){
+        console.error('Failed to initialize Coreor drawing layers',err);
+        onError('Drawing layers could not be initialized. Switch map style or reload.');
+      }
     };
-    const onStyle=()=>{ensureLayers();setCounter(x=>x+1);};
-    map.on('style.load',onStyle);
-    if(map.isStyleLoaded())ensureLayers();
-    return()=>{map.off('style.load',onStyle);};
-  },[map]);
+    map.on('style.load',ensureLayers);
+    if(map.getStyle()?.layers?.length)ensureLayers();
+    return()=>{map.off('style.load',ensureLayers);};
+  },[map,syncDrawingData,onError]);
+
   useEffect(()=>{
-    if(!map||!map.isStyleLoaded()||!map.getSource(MAIN))return;
-    const selectedFeatures=features.map(f=>({...f,properties:{...f.properties,selected:selected.includes(f.id)}}));
-    (map.getSource(MAIN) as GeoJSONSource).setData(collection(selectedFeatures));
-    const points=draft.points;
-    const draftFeatures:MapFeature[]=[];
-    if(points.length) {
-      for(const p of points)draftFeatures.push(createFeature('point',[p]));
-      if(points.length>1)draftFeatures.push(createFeature('line',points));
-      if(mode==='polygon'&&points.length>=3)draftFeatures.push(createFeature('polygon',points));
-      if(mode==='circle'&&points.length===2)draftFeatures.push(createCircle(points[0],distanceMeters(points[0],points[1])));
-    }
-    (map.getSource(PREVIEW) as GeoJSONSource).setData(collection(draftFeatures));
-    const handles=selected.filter(id=>features.some(f=>f.id===id)).flatMap(id=>{
-      const f=features.find(x=>x.id===id)!;
-      return vertices(f).map((point,index)=>({...createFeature('point',[point]),properties:{...createFeature('point',[point]).properties,_fid:id,_vertex:index}}));
-    });
-    (map.getSource(VERTICES) as GeoJSONSource).setData({type:'FeatureCollection',features:mode==='edit'?handles:[]});
-  },[map,features,draft,mode,selected,counter]);
+    if(!map)return;
+    // GeoJSONSource#setData is valid while tiles and workers are loading.
+    // Waiting for isStyleLoaded() causes all changes to be silently dropped.
+    syncDrawingData(map);
+  },[map,features,draft,mode,selected,counter,syncDrawingData]);
+
   useEffect(()=>{
     if(!map)return;
     const click=(e:maplibregl.MapMouseEvent)=>{
